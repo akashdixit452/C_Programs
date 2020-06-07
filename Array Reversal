@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+void reverse_array(int*, int);
+int main()
+{
+    int num, *arr, i;
+    scanf("%d", &num);
+    arr = (int*) malloc(num * sizeof(int));
+    for(i = 0; i < num; i++) {
+        scanf("%d", arr + i);
+    }
+
+
+    /* Write the logic to reverse the array. */
+    reverse_array(arr, num);
+
+    for(i = 0; i < num; i++)
+        printf("%d ", *(arr + i));
+    return 0;
+}
+void reverse_array(int *pointer, int n)
+{
+   int *s, c, d;
+   
+   s = (int*)malloc(sizeof(int)*n);
+   
+   if( s == NULL )
+      exit(EXIT_FAILURE);
+     
+   for ( c = n - 1, d = 0 ; c >= 0 ; c--, d++ )
+      *(s+d) = *(pointer+c);
+   
+   for ( c = 0 ; c < n ; c++ )
+      *(pointer+c) = *(s+c);
+     
+   free(s);
+}
